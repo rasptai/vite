@@ -12,7 +12,13 @@ function createWindow() {
       sandbox: false,
     },
   })
-  win.loadURL('http://localhost:5173/')
+  if (app.isPackaged) {
+    win.loadFile(join(__dirname, '../renderer/index.html'))
+    // ここでuvicornを起動する
+  } else {
+    win.loadURL('http://localhost:5173/')
+  }
+  console.log(app.isPackaged)
 }
 
 // アプリケーションが準備できたらウィンドウを作成

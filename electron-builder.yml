@@ -1,0 +1,11 @@
+appId: com.biotec.app
+productName: Pattern Generator
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!{tsconfig.json, vite.config.ts, vite.config.main.ts, vite.config.preload.ts}'
+  - '!{.gitignore, eslint.config.js, prettier.config.js, .prettierignore }'
+win:
+  executableName: PatternGenerator
+nsis:
+  oneClick: false
