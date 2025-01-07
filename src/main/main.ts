@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron'
 import { join } from 'path'
+import { execFile } from 'child_process'
 const __dirname = import.meta.dirname
 
 // ウィンドウを作成する関数
@@ -13,8 +14,10 @@ function createWindow() {
     },
   })
   if (app.isPackaged) {
+    execFile(join(process.resourcesPath, 'main.exe'), (err) => {
+      if (err) console.error(err)
+    })
     win.loadFile(join(__dirname, '../renderer/index.html'))
-    // ここでuvicornを起動する
   } else {
     win.loadURL('http://localhost:5173/')
   }

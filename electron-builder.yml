@@ -3,9 +3,19 @@ productName: Pattern Generator
 files:
   - '!**/.vscode/*'
   - '!src/*'
+  - '!api/*'
   - '!{tsconfig.json, vite.config.ts, vite.config.main.ts, vite.config.preload.ts}'
   - '!{.gitignore, eslint.config.js, prettier.config.js, .prettierignore }'
+extraResources:
+  - from: './main.exe'
+    to: '.'
 win:
   executableName: PatternGenerator
 nsis:
+  artifactName: PatternGeneratorSetup.${ext}
+  shortcutName: PatternGenerator
+  uninstallDisplayName: PatternGenerator
   oneClick: false
+npmRebuild: false
+appImage:
+  artifactName: PatternGenerator-${version}.${ext}
