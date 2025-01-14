@@ -1,10 +1,9 @@
 import '../../preload/preload'
-import FormComponent from './components/Form'
 
 function App(): JSX.Element {
   return (
     <div>
-      <FormComponent />
+      <h1>Hello, World</h1>
     </div>
   )
 }
