@@ -8,5 +8,6 @@ export default defineConfig({
   build: {
     outDir: '../../out/renderer',
     emptyOutDir: true,
+    chunkSizeWarningLimit: 1000000000,
   },
 })
