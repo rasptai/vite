@@ -7,8 +7,12 @@ files:
   - '!{tsconfig.json, vite.config.ts, vite.config.main.ts, vite.config.preload.ts}'
   - '!{.gitignore, eslint.config.js, prettier.config.js, .prettierignore }'
 extraResources:
-  - from: './main.exe'
-    to: '.'
+  - from: 'python'
+    to: 'python'
+  - from: 'api'
+    to: 'scripts'
+    filter: '**/*.py'
+
 win:
   executableName: PatternGenerator
 nsis:
@@ -19,3 +23,4 @@ nsis:
 npmRebuild: false
 appImage:
   artifactName: PatternGenerator-${version}.${ext}
+forceCodeSigning: false

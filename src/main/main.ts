@@ -1,7 +1,9 @@
 import { app, BrowserWindow } from 'electron'
 import { join } from 'path'
-import { execFile } from 'child_process'
+import { spawn, ChildProcess } from 'child_process'
 const __dirname = import.meta.dirname
+
+let pythonProcess: ChildProcess | null = null
 
 // ウィンドウを作成する関数
 function createWindow() {
@@ -14,14 +16,13 @@ function createWindow() {
     },
   })
   if (app.isPackaged) {
-    execFile(join(process.resourcesPath, 'main.exe'), (err) => {
-      if (err) console.error(err)
-    })
+    pythonProcess = spawn(join(process.resourcesPath, 'python/python.exe'), [
+      join(process.resourcesPath, 'scripts/main.py'),
+    ])
     win.loadFile(join(__dirname, '../renderer/index.html'))
   } else {
     win.loadURL('http://localhost:5173/')
   }
-  console.log(app.isPackaged)
 }
 
 // アプリケーションが準備できたらウィンドウを作成
@@ -32,5 +33,11 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     // macOSはウィンドウが閉じられても終了しない
     app.quit()
+  }
+})
+
+app.on('will-quit', () => {
+  if (pythonProcess) {
+    pythonProcess.kill()
   }
 })
