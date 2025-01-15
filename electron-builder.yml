@@ -1,5 +1,7 @@
 appId: com.biotec.app
 productName: Pattern Generator
+directories:
+  buildResources: build
 files:
   - '!**/.vscode/*'
   - '!src/*'
@@ -9,10 +11,8 @@ files:
 extraResources:
   - from: 'python'
     to: 'python'
-  - from: 'api'
+  - from: 'api/app'
     to: 'scripts'
-    filter: '**/*.py'
-
 win:
   executableName: PatternGenerator
 nsis:
@@ -20,7 +20,5 @@ nsis:
   shortcutName: PatternGenerator
   uninstallDisplayName: PatternGenerator
   oneClick: false
+  allowToChangeInstallationDirectory: true
 npmRebuild: false
-appImage:
-  artifactName: PatternGenerator-${version}.${ext}
-forceCodeSigning: false
