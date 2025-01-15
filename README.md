@@ -28,6 +28,18 @@ python 3.12.1がインストールされていて環境を完全に同期した�
 pipenv sync
 ```
 
+python embeddedをダウンロードして、pythonというフォルダ名でルートディレクトリに追加する
+.vscodeフォルダ内にsettings.jsonを作成し、下記を追加する
+```sh
+{
+  "prettier.configPath": "./prettier.config.js",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "python.defaultInterpreterPath": "${workspaceFolder}/api/.venv/Scripts/python.exe"
+}
+```
+
+
 ### 起動方法
 ルートディレクトリにて
 ```sh
