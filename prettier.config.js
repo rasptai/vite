@@ -7,4 +7,5 @@ export default {
   jsxSingleQuote: true,
   trailingComma: 'es5',
   bracketSpacing: true,
+  singleAttributePerLine: true,
 };
